@@ -1,0 +1,142 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" />
+    <script src="{% static 'js/bootstrap.bundle.js' %}" rel="javascript" type="text/javascript"></script>
+    <title>Login Page</title>
+</head>
+
+<body class="asad">
+    <div class="container-fluid">
+        <!-- MESSAGE BLOCK -->
+        {% if messages %}
+        <div class="row justify-content-center mt-3">
+            <div class="col-sm-6 text-light">
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+
+        <div class="row">
+            <!-- LEFT SIDE -->
+            <div class="col-sm-6">
+                <div class="row justify-content-sm-end align-items-sm-center rights">
+                    <div class="col-sm-8">
+                        <div class="img">
+                            <img src="{% static 'images/facebook.svg' %}" alt="" height="100px" width="315px">
+                        </div>
+                        <div class="row justify-content-sm-end">
+                            <div class="col-sm">
+                                <span class="fs-2"><b>Facebook helps you connect and share with the people in your life.</b></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT SIDE -->
+            <div class="col-sm-5">
+                <div class="row justify-content-sm-center align-items-sm-center rights">
+                    <div class="col-sm-8 bg-light logbox rounded">
+                        <!-- LOGIN FORM -->
+                        <form action="" method="post" class="form-group">
+                            {% csrf_token %}
+                            <div class="row mt-3">
+                                <div class="col-sm-8 vw-100 mt-3 input-group input-group-lg">
+                                    <input type="email" placeholder="Enter Your Email" class="form-control border border-dark border-3" name="email" required>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-8 vw-100 my-3 input-group input-group-lg">
+                                    <input type="password" placeholder="Enter Your Password" class="form-control border border-dark border-3" name="password" required>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-8 vw-100">
+                                    <button class="btn btn-outline-primary form-control w-100 my-2" type="submit">Login</button>
+                                </div>
+                            </div>
+                        </form>
+
+                        <!-- FORGOTTEN PASSWORD -->
+                        <div class="row mt-2">
+                            <div class="col-sm text-center">
+                                <a href="#" class="nav nav-link">
+                                    <u>Forgotten password?</u>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm mx-auto">
+                                <hr class="text-dark">
+                            </div>
+                        </div>
+
+                        <!-- SIGN UP BUTTON -->
+                        <div class="row">
+                            <div class="col-sm-6 mx-auto mb-3">
+                                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                    Create new account
+                                </button>
+
+                                <!-- MODAL -->
+                                <div class="modal fade text-dark" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5" id="exampleModalLabel"><b>Sign Up</b></h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <!-- REGISTRATION FORM -->
+                                                <form action="" class="form-group" method="post">
+                                                    {% csrf_token %}
+                                                    <div class="row">
+                                                        <div class="col-sm">
+                                                            <input type="text" class="form-control" name="firstname" placeholder="First name" required>
+                                                        </div>
+                                                        <div class="col-sm">
+                                                            <input type="text" class="form-control" name="lastname" placeholder="Surname" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mt-3">
+                                                        <div class="col">
+                                                            <input type="email" class="form-control" name="email" placeholder="Mobile number or email address" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mt-3">
+                                                        <div class="col">
+                                                            <input type="password" class="form-control" name="password" placeholder="New password" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer mt-4">
+                                                        <button type="submit" class="btn btn-success mx-auto">Sign Up</button>
+                                                    </div>
+                                                </form>
+                                                <!-- END REGISTRATION FORM -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- END MODAL -->
+                            </div>
+                        </div>
+                        <!-- END SIGNUP BUTTON -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
